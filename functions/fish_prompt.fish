@@ -70,12 +70,14 @@ function fish_prompt
   set -l git_info $git_info$normal
   set -l rbenv_info ' ♦️ ' $red(_rbenv_version)$normal
   set -l pyenv_info ' 🐍 ' $red(_pyenv_version)$normal
-  set -l plenv_info ' ⚪️ ' $red(_plenv_version)$normal
+  set -l plenv_info ' 🐪 ' $red(_plenv_version)$normal
+  set -l php_info   ' 🐘 ' $red(_php_version)$normal
 
   echo -e -n -s '╭─ 正念 ' $cwd \
                 $git_info \
                 $rbenv_info \
                 $pyenv_info \
                 $plenv_info \
+		$php_info \
                 '\n╰─ ' $arrow ' '
 end
