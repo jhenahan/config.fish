@@ -6,6 +6,7 @@ set fish_path $HOME/.oh-my-fish
 set PATH $HOME/git/**/.cabal-sandbox/bin				# Go grab all my local sandboxed stuff - slow the first time
 set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH		# System paths
 set PATH /usr/texbin $PATH						# TeX paths
+set PATH $HOME/.composer/vendor/bin $PATH                                     # Composer global installs
 set PATH /usr/local/bin /usr/local/opt/coreutils/libexec/gnubin $PATH	# Homebrew paths
 set PATH $HOME/Library/Haskell/bin $PATH				# Haskell paths
 set PATH /usr/local/tranquil/bin $PATH					# Tranquil paths
