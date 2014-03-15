@@ -24,6 +24,10 @@ function fish_prompt
     echo (command plenv version | awk '{print $1}')
   end
 
+  function _php_version
+    echo (command php -v | awk 'NR==1 {print $2}')
+  end
+
   switch $USER
 
   case root
