@@ -54,7 +54,7 @@ alias econf 'e ~/.emacs.d/init.org'
 ## File operations
 ### Ignore backups, classify, human-readable sizes, kibibytes, long, group directories before files
 alias l 'ls -BFhkl --group-directories-first' 
-alias la 'ls -AFhkl --group-directorie-first' # All but .. and ., don't ignore backups
+alias la 'ls -AFhkl --group-directories-first' # All but .. and ., don't ignore backups
 alias lft 'ls -X' # sort by filetype
 
 ### Get a warning before you break things, ya dingus
