@@ -32,7 +32,7 @@ set fish_plugins plenv $fish_plugins # Perl
 # TODO: phpenv - pending josegonzalez/homebrew-php/issues/1037
 
 ## Convenience plugins
-set fish_plugins rake tmux vi-mode
+set fish_plugins rake tmux vi-mode $fish_plugins
 set vi_mode_default vi_mode_insert
 
 # Compilation settings
