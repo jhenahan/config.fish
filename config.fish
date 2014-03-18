@@ -3,14 +3,15 @@ set fish_path $HOME/.oh-my-fish
 
 
 # PATH stuff
-set PATH $HOME/git/**/.cabal-sandbox/bin				# Go grab all my local sandboxed stuff - slow the first time
-set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH		# System paths
-set PATH /usr/texbin $PATH						# TeX paths
-set PATH $HOME/.composer/vendor/bin $PATH                                     # Composer global installs
-set PATH /usr/local/bin /usr/local/opt/coreutils/libexec/gnubin $PATH	# Homebrew paths
-set PATH $HOME/Library/Haskell/bin $PATH				# Haskell paths
-set PATH /usr/local/tranquil/bin $PATH					# Tranquil paths
-set PATH $HOME/bin $PATH						# Local scripts paths
+set PATH $HOME/git/**/.cabal-sandbox/bin                                        # Go grab all my local sandboxed stuff - slow the first time
+set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH                       # System paths
+set PATH /usr/texbin $PATH                                                      # TeX paths
+set PATH $HOME/.composer/vendor/bin $PATH                                       # Composer global installs
+set PATH /usr/local/bin /usr/local/opt/coreutils/libexec/gnubin $PATH           # Homebrew paths
+set PATH $HOME/Library/Haskell/bin $PATH                                        # Haskell paths
+set PATH /usr/local/tranquil/bin $PATH                                          # Tranquil paths
+set PATH $HOME/bin $PATH                                                        # Local scripts paths
+set PATH $HOME/.nodenv/bin $HOME/.nodenv/shims $PATH                            # Nodenv path
 set -x PATH $PATH
 
 # Other paths
@@ -27,9 +28,10 @@ set -x MANPATH /usr/local/share/man /usr/local/opt/coreutils/libexec/gnuman $MAN
 eval (hub alias -s)
 
 ## Language envs
-set fish_plugins rbenv # Ruby
+set fish_plugins rbenv               # Ruby
 set fish_plugins pyenv $fish_plugins # Python
 set fish_plugins plenv $fish_plugins # Perl
+nodenv rehash 2>/dev/null            # Node
 # TODO: phpenv - pending josegonzalez/homebrew-php/issues/1037
 
 ## Convenience plugins
@@ -64,3 +66,16 @@ alias rm 'rm -i'
 alias mv 'mv -i'
 
 source $fish_path/oh-my-fish.fish
+
+
+function nodenv
+  set command $argv[1]
+  set -e argv[1]
+  
+  switch "$command"
+  case rehash shell
+    eval (nodenv "sh-$command" $argv)
+  case '*'
+    command nodenv "$command" $argv
+  end
+end
