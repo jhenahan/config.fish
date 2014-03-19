@@ -9,9 +9,11 @@ set PATH /usr/texbin $PATH                                                      
 set PATH $HOME/.composer/vendor/bin $PATH                                       # Composer global installs
 set PATH /usr/local/bin /usr/local/opt/coreutils/libexec/gnubin $PATH           # Homebrew paths
 set PATH $HOME/Library/Haskell/bin $PATH                                        # Haskell paths
+set PATH $HOME/.cask/bin $PATH                                                  # Cask path
 set PATH /usr/local/tranquil/bin $PATH                                          # Tranquil paths
 set PATH $HOME/bin $PATH                                                        # Local scripts paths
 set PATH $HOME/.nodenv/bin $HOME/.nodenv/shims $PATH                            # Nodenv path
+set PATH /Applications/Postgres.app/Contents/Versions/9.3/bin $PATH             # Postgres path
 set -x PATH $PATH
 
 # Other paths
