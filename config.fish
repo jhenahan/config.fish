@@ -3,17 +3,18 @@ set fish_path $HOME/.oh-my-fish
 
 
 # PATH stuff
-set PATH $HOME/git/**/.cabal-sandbox/bin                                        # Go grab all my local sandboxed stuff - slow the first time
+set PATH $HOME/dev/haskell-tools/.cabal-sandbox/bin                             # Keep all the necessary dev tools in a sandbox
+set PATH $HOME/dev/idris/.cabal-sandbox/bin $PATH                               # Idris
 set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH                       # System paths
 set PATH /usr/texbin $PATH                                                      # TeX paths
 set PATH $HOME/.composer/vendor/bin $PATH                                       # Composer global installs
 set PATH /usr/local/bin /usr/local/opt/coreutils/libexec/gnubin $PATH           # Homebrew paths
-set PATH $HOME/Library/Haskell/bin $PATH                                        # Haskell paths
+set PATH $HOME/.cabal/bin $PATH                                                 # Haskell paths
 set PATH $HOME/.cask/bin $PATH                                                  # Cask path
 set PATH /usr/local/tranquil/bin $PATH                                          # Tranquil paths
 set PATH $HOME/bin $PATH                                                        # Local scripts paths
 set PATH $HOME/.nodenv/bin $HOME/.nodenv/shims $PATH                            # Nodenv path
-set PATH /Applications/Postgres.app/Contents/Versions/9.3/bin $PATH             # Postgres path
+set PATH /usr/local/opt/ccache/libexec $PATH                                    # ccache symlinks
 set -x PATH $PATH
 
 # Other paths
@@ -23,7 +24,7 @@ set -x PATH $PATH
 set -x PKG_CONFIG_PATH /opt/X11/lib/pkgconfig /usr/local/lib/pkgconfig
 
 ## man paths, good for fish_update_completions
-set -x MANPATH /usr/local/share/man /usr/local/opt/coreutils/libexec/gnuman $MANPATH
+set -x MANPATH /usr/local/share/man /usr/local/opt/coreutils/libexec/gnuman /usr/local/opt/erlang/lib/erlang/man $MANPATH
 
 ## Conveniences
 ### Hub: wrapper around git for interacting fluently with github - github/hub
@@ -34,7 +35,6 @@ set fish_plugins rbenv               # Ruby
 set fish_plugins pyenv $fish_plugins # Python
 set fish_plugins plenv $fish_plugins # Perl
 nodenv rehash 2>/dev/null            # Node
-# TODO: phpenv - pending josegonzalez/homebrew-php/issues/1037
 
 ## Convenience plugins
 set fish_plugins rake tmux vi-mode $fish_plugins
