@@ -5,6 +5,7 @@ set fish_path $HOME/.oh-my-fish
 # PATH stuff
 set PATH $HOME/dev/haskell-tools/.cabal-sandbox/bin                             # Keep all the necessary dev tools in a sandbox
 set PATH $HOME/dev/idris/.cabal-sandbox/bin $PATH                               # Idris
+set PATH $HOME/dev/pandoc/.cabal-sandbox/bin $PATH                              # Pandoc
 set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH                       # System paths
 set PATH /usr/texbin $PATH                                                      # TeX paths
 set PATH $HOME/.composer/vendor/bin $PATH                                       # Composer global installs
@@ -81,3 +82,7 @@ function nodenv
     command nodenv "$command" $argv
   end
 end
+
+# OPAM configuration
+. /Users/jhenahan/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+eval (opam config env)
