@@ -10,7 +10,7 @@ set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH                       
 set PATH /usr/texbin $PATH                                                      # TeX paths
 set PATH $HOME/.composer/vendor/bin $PATH                                       # Composer global installs
 set PATH /usr/local/bin /usr/local/opt/coreutils/libexec/gnubin $PATH           # Homebrew paths
-set PATH $HOME/.cabal/bin $PATH                                                 # Haskell paths
+set PATH $HOME/.cabal/bin $HOME/GHC/bin $HOME/Library/Haskell/bin $PATH         # Haskell paths
 set PATH $HOME/.cask/bin $PATH                                                  # Cask path
 set PATH /usr/local/tranquil/bin $PATH                                          # Tranquil paths
 set PATH $HOME/bin $PATH                                                        # Local scripts paths
