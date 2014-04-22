@@ -74,11 +74,11 @@ function fish_prompt
     set git_info ":$git_info$normal [$git_hash]"
 
     if emacsen
-      set dirty " ☹ "
-      set clean " ☺︎ "
+      set dirty "☹ "
+      set clean "☺︎ "
     else
       set dirty "💔"
-      set clean " ❤️ "
+      set clean "❤️ "
     end
       
     if [ (_is_git_dirty) ]
