@@ -15,7 +15,6 @@ set PATH $HOME/.cask/bin $PATH                                                  
 set PATH /usr/local/tranquil/bin $PATH                                          # Tranquil paths
 set PATH $HOME/bin $PATH                                                        # Local scripts paths
 set PATH $HOME/.nodenv/bin $HOME/.nodenv/shims $PATH                            # Nodenv path
-set PATH /usr/local/opt/ccache/libexec $PATH                                    # ccache symlinks
 set -x PATH $PATH
 
 # Other paths
@@ -25,7 +24,7 @@ set -x PATH $PATH
 set -x PKG_CONFIG_PATH /opt/X11/lib/pkgconfig /usr/local/lib/pkgconfig
 
 ## man paths, good for fish_update_completions
-set -x MANPATH /usr/local/share/man /usr/local/opt/coreutils/libexec/gnuman /usr/local/opt/erlang/lib/erlang/man $MANPATH
+set -x MANPATH /usr/local/share/man /usr/local/opt/coreutils/libexec/gnuman /usr/local/opt/erlang/lib/erlang/man $HOME/GHC/share/man $MANPATH
 
 ## Conveniences
 ### Hub: wrapper around git for interacting fluently with github - github/hub
@@ -76,7 +75,7 @@ function nodenv
   set -e argv[1]
   
   switch "$command"
-  case rehash shell
+  case shell
     eval (nodenv "sh-$command" $argv)
   case '*'
     command nodenv "$command" $argv
