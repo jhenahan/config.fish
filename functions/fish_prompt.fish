@@ -78,7 +78,7 @@ function fish_prompt
       set clean " ☺︎ "
     else
       set dirty "💔"
-      set clean " 💔 "
+      set clean " ❤️ "
     end
       
     if [ (_is_git_dirty) ]
