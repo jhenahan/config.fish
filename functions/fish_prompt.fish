@@ -19,28 +19,6 @@ function fish_prompt
   function _git_short_hash
     echo (command git rev-parse --short HEAD ^/dev/null)
   end
-  
-  if not emacsen
-    function _rbenv_version
-      echo (command rbenv version | awk '{print $1}')
-    end
-
-    function _pyenv_version
-      echo (command pyenv version | awk '{print $1}')
-    end
-
-    function _plenv_version
-      echo (command plenv version | awk '{print $1}')
-    end
-
-    function _php_version
-      echo (command php -v | awk 'NR==1 {print $2}')
-    end
-
-    function _nodenv_version
-      echo (command nodenv version | awk '{print $1}')
-    end
-  end
 
   switch $USER
 
@@ -92,20 +70,9 @@ function fish_prompt
   
   if emacsen
     echo -e -n -s '正念 ' $cwd $git_info $arrow ' '
-  else 
-    set -l rbenv_info  ' ♦️ ' $red(_rbenv_version)$normal
-    set -l pyenv_info  ' 🐍 ' $red(_pyenv_version)$normal
-    set -l plenv_info  ' 🐪 ' $red(_plenv_version)$normal
-    set -l php_info    ' 🐘 ' $red(_php_version)$normal
-    set -l node_info   ' 🐹 ' $red(_nodenv_version)$normal
-
+  else
     echo -e -n -s '╭─ 正念 ' $cwd \
 		  $git_info \
-		  $rbenv_info \
-		  $pyenv_info \
-		  $plenv_info \
-		  $php_info \
-		  $node_info \
 		  '\n╰─ ' $arrow ' '
   end
 end

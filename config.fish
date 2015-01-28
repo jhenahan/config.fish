@@ -3,18 +3,28 @@ set fish_path $HOME/.oh-my-fish
 
 
 # PATH stuff
-set PATH $HOME/dev/haskell-tools/.cabal-sandbox/bin                             # Keep all the necessary dev tools in a sandbox
-set PATH $HOME/dev/idris/.cabal-sandbox/bin $PATH                               # Idris
-set PATH $HOME/dev/pandoc/.cabal-sandbox/bin $PATH                              # Pandoc
-set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH                       # System paths
-set PATH /usr/texbin $PATH                                                      # TeX paths
-set PATH $HOME/.composer/vendor/bin $PATH                                       # Composer global installs
-set PATH /usr/local/bin /usr/local/opt/coreutils/libexec/gnubin $PATH           # Homebrew paths
-set PATH $HOME/.cabal/bin $HOME/GHC/bin $HOME/Library/Haskell/bin $PATH         # Haskell paths
-set PATH $HOME/.cask/bin $PATH                                                  # Cask path
-set PATH /usr/local/tranquil/bin $PATH                                          # Tranquil paths
-set PATH $HOME/bin $PATH                                                        # Local scripts paths
-set PATH $HOME/.nodenv/bin $HOME/.nodenv/shims $PATH                            # Nodenv path
+# Haskell
+set GHC_DOT_APP /Applications/ghc-7.8.3.app 
+set -x PATH $HOME/.cabal/bin $GHC_DOT_APP/Contents/bin $PATH
+set -x PATH $HOME/.haskellbin/.cabal-sandbox/bin $PATH
+set -x PATH $HOME/.haskellbin/**/.cabal-sandbox/bin $PATH
+set PATH $HOME/dev/haskell-tools/.cabal-sandbox/bin
+
+# System paths
+set PATH /usr/bin /bin /usr/sbin /sbin /opt/X11/bin $PATH                       
+
+# TeX
+set PATH /usr/texbin $PATH                                                      
+
+# Composer global installs
+set PATH $HOME/.composer/vendor/bin $PATH
+
+# Homebrew
+set PATH /usr/local/bin /usr/local/sbin /usr/local/opt/coreutils/libexec/gnubin $PATH
+
+# Local scripts
+set PATH $HOME/bin $PATH
+
 set -x PATH $PATH
 
 # Other paths
@@ -31,10 +41,8 @@ set -x MANPATH /usr/local/share/man /usr/local/opt/coreutils/libexec/gnuman /usr
 eval (hub alias -s)
 
 ## Language envs
-set fish_plugins rbenv               # Ruby
-set fish_plugins pyenv $fish_plugins # Python
-set fish_plugins plenv $fish_plugins # Perl
-nodenv rehash 2>/dev/null            # Node
+set fish_plugins chruby
+chruby ruby
 
 ## Convenience plugins
 set fish_plugins rake tmux vi-mode $fish_plugins
@@ -50,11 +58,10 @@ set -x EDITOR 'emacsclient -c'
 ## Text
 alias e $EDITOR
 alias E 'sudo -e'
-alias hnote 'IHaskell notebook --ipython=(which ipython)'
 
 ## Configs
 alias fconf 'e ~/.config/fish/config.fish'
-alias econf 'e ~/.emacs.d/init.org'
+alias econf 'e ~/.spacemacs'
 
 ## File operations
 ### Ignore backups, classify, human-readable sizes, kibibytes, long, group directories before files
@@ -68,20 +75,3 @@ alias rm 'rm -i'
 alias mv 'mv -i'
 
 source $fish_path/oh-my-fish.fish
-
-
-function nodenv
-  set command $argv[1]
-  set -e argv[1]
-  
-  switch "$command"
-  case shell
-    eval (nodenv "sh-$command" $argv)
-  case '*'
-    command nodenv "$command" $argv
-  end
-end
-
-# OPAM configuration
-. /Users/jhenahan/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-eval (opam config env)
