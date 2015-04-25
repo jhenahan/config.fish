@@ -51,7 +51,12 @@ set -x PATH bin $PATH
 set -x BOXEN_GITHUB_LOGIN jhenahan
 eval (hub alias -s)
 
-## Language envs
+## Ruby
+set CHRUBY_ROOT $HOMEBREW_ROOT
+set -x PATH /opt/boxen/ruby-build/bin $PATH
+set -x RUBIES /opt/rubies/*
+set -x BUNDLE_JOBS 8
+
 set fish_plugins chruby
 
 ## Convenience plugins
@@ -85,4 +90,4 @@ alias cp 'cp -i'
 alias rm 'rm -i'
 alias mv 'mv -i'
 
-chruby ruby
+chruby 2.2.2
