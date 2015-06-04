@@ -1,13 +1,5 @@
 function fish_prompt
 
-  function emacsen
-    if set --query INSIDE_EMACS
-      return 0
-    else
-      return 1
-    end
-  end
-
   function _git_branch_name
     echo (command git rev-parse --abbrev-ref HEAD ^/dev/null)
   end
@@ -51,13 +43,8 @@ function fish_prompt
     set git_hash $ugreen(_git_short_hash)$normal
     set git_info ":$git_info$normal [$git_hash]"
 
-    if emacsen
-      set dirty "☹ "
-      set clean "☺︎ "
-    else
-      set dirty "💔"
-      set clean "❤️"
-    end
+    set dirty "💔"
+    set clean "❤️"
       
     if [ (_is_git_dirty) ]
       set git_info "$git_info$dirty "
@@ -68,11 +55,7 @@ function fish_prompt
 
   set -l git_info $git_info$normal
   
-  if emacsen
-    echo -e -n -s '正念 ' $cwd $git_info $arrow ' '
-  else
-    echo -e -n -s '╭─ 正念 ' $cwd \
-		  $git_info \
-		  '\n╰─ ' $arrow ' '
-  end
+  echo -e -n -s '╭─ 正念 ' $cwd \
+	$git_info \
+	'\n╰─ ' $arrow ' '
 end
