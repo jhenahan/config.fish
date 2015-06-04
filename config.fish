@@ -5,10 +5,12 @@ set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin
 
 
 
+set fish_location $HOME/.config/fish
 
 
 source $fish_location/boxen.fish
 
+source $fish_location/not_boxen.fish
 
 set -x PATH bin $PATH
 
