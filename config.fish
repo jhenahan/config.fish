@@ -4,6 +4,10 @@ set fish_path $HOME/.oh-my-fish
 set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin
 
 
+# See https://github.com/fish-shell/fish-shell/issues/2090
+if test 0 -eq (count $MANPATH)
+  set -gx MANPATH ""
+end
 
 set fish_location $HOME/.config/fish
 
