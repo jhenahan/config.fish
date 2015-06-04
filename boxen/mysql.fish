@@ -1,0 +1,4 @@
+set -x BOXEN_MYSQL_HOST 127.0.0.1
+set -x BOXEN_MYSQL_PORT 13306
+set -x BOXEN_MYSQL_SOCKET $BOXEN_HOME/data/socket
+set -x BOXEN_MYSQL_URL "mysql://"(whoami)"@"$BOXEN_MYSQL_HOST":"$BOXEN_MYSQL_PORT"/"
